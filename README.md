@@ -1,1 +1,0 @@
-# semifunctor.github.io
