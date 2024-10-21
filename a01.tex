@@ -1,0 +1,166 @@
+\documentclass[a4paper,twoside,12pt]{article}
+%\usepackage [reqno] {amsmath}
+\usepackage{amsfonts,amstext}
+\usepackage{amsmath}
+\usepackage{babel}[english]
+\usepackage{fullpage}
+\usepackage{hyperref}
+
+\newcommand{\ZETTELNUMMER}{1}
+\newcommand{\ABGABEDATUM}{Friday, October 25, 2024, 12:00 PM}
+
+\newcounter{AUFGNR}
+\setcounter{AUFGNR}{1}
+\newcommand{\AUFGABE}[2]{\vspace{0.3cm}\item[Problem \arabic{AUFGNR}]\stepcounter{AUFGNR} #1\hfill\emph{#2}}
+
+
+\newcommand{\floor}[1]{\left\lfloor{#1}\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil{#1}\right\rceil}
+\newcommand{\half}[1]{\frac{#1}{2}}
+
+
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+
+
+\begin{document}
+\pagestyle{empty}
+\hrule\medskip
+\rule{0ex}{0ex}\\[-1ex]
+\ZETTELNUMMER. Problem Set
+
+\smallskip
+\noindent
+\large
+\textbf{Concepts of Programming}\hfill 
+WiSe 2024/25 \\[0.5ex]
+\normalsize
+Wolfgang Mulzer
+
+\medskip\hrule
+
+\smallskip
+\noindent
+\textbf{Due} \ABGABEDATUM
+
+\vskip 0.5cm
+
+\begin{description}
+
+		\AUFGABE{Algorithms}{10 Pts}
+\begin{enumerate}
+
+\item An algorithm is defined as a (1) \emph{finitely described},
+(2) \emph{deterministic}, (3) \emph{effectively calculable} procedure
+that transform an input into an output.
+
+Elaborate on these three properties in the definition.
+For each property, provide an example
+where it is \emph{not} fulfilled.
+
+\item Describe, in as much detail as possible, the steps to
+  make a hard-boiled egg. Is your description an algorithm?
+Why or why not?
+\end{enumerate} 
+
+
+
+\AUFGABE{A Game of Guessing Numbers}{10 Pts}
+
+Werner and Hannelore play a game called \emph{Guess the Number}.
+The rules are as follows:
+\begin{enumerate}
+\item Werner and Hannelore agree on a positive integer $n \geq 1$.
+\item Werner thinks of a secret number $x\in \left[1,n\right]$. \footnote{The \emph{brackets} ($\left[ \right]$) denote a \href{https://en.wikipedia.org/wiki/Interval_(mathematics)}{\emph{closed interval}}, i.e. $1\leq x \leq n$.} 
+\item Hannelore tries to guess $x$ by proposing numbers.
+\item For each guess $y$, Werner responds with one of three statements:
+  \begin {itemize}
+  \item ``My number $x$ is greater than $y$.''
+  \item ``My number $x$ is less than $y$.''
+  \item ``Hit!'' (if $y=x$)
+  \end {itemize}
+\item The game ends when Hannelore guesses correctly.
+\end{enumerate}
+
+Assume Werner plays honestly.
+
+Hannelore uses the following strategy:
+\begin{itemize}
+\item She maintains two variables, $a$ and $b$, intially set to $1$ and $n$, respectively.
+\item In each round, Hannelore chooses a number $c\in\left[ a,b \right]$.
+\item Based on Werner's response, Hannelore updates $a$ or $b$:
+  \begin {itemize}
+  \item If ``Hit!'', the game ends.
+  \item If ``Less'', she sets $b = c-1$.
+  \item If ``Greater'', she sets $a = c + 1$.
+  \end {itemize}
+\end{itemize}
+
+\begin{enumerate}
+  \item Provide a detailed example of this game for $n = 10$, showing
+    Hannelore's strategy in action.
+  \item Prove that Hannelore's strategy always succeeds in a finite number of rounds.
+
+  \emph{Hint}: 
+  Identify an invariant condition that holds at the beginning of each round.
+  Your proof should address two key points:
+  \begin{enumerate}
+      \item[(i)] Hannelore makes ``progress'' in each round;
+      \item[(ii)] Hannelore cannot ``miss'' Werner's number.
+  \end{enumerate}
+\end{enumerate}
+
+
+\AUFGABE{First Steps in Python}{10 Pts}
+
+\begin{enumerate}
+\item Download and install Python (Version 3) on your computer.
+\item Start the Python REPL and enter the following commands. 
+  For each, explain what happens and provide a brief interpretation:
+  \begin{enumerate}
+    \item \begin{verbatim}a = 8 + 10\end{verbatim}
+    \item \begin{verbatim}
+help()
+quit 
+\end{verbatim}
+    \item \begin{verbatim}3 + 5 * 7 == a - 2\end{verbatim}
+    \item \begin{verbatim}
+a = 40
+3 + 5 * 7 == a - 2
+\end{verbatim}
+\item \begin{verbatim}print("KDP", str(a * 50 + 2*10 + 4 - 1) + ".\n")\end{verbatim}
+    \item \begin{verbatim}True or (False and True)\end{verbatim}
+    \item \begin{verbatim}
+if a - 4 <= 5:
+    print("Ja")
+else:
+    print("Nein")
+          \end{verbatim}
+    \item \begin{verbatim}
+2 * (4 +
+
+5)
+\end{verbatim}
+    \item \begin{verbatim}
+for i in range(10):
+    print(2 * i +  1)
+    \end{verbatim}
+    \item \begin{verbatim}exit()\end{verbatim}
+  \end{enumerate}
+\item
+  Download the file \texttt{mystery.py} from the course website
+  and import it into Python using the command
+  \texttt{from mystery import mystery}.
+  What happens when you enter:
+  \begin{verbatim}
+mystery("anna") 
+mystery("banane")
+mystery("caesar") 
+\end{verbatim}
+
+  Conduct further experiments and formulate a hypothesis about what the function ``mystery'' does.
+\end{enumerate}
+
+
+\end{description}
+\end{document}
