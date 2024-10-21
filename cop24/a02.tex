@@ -1,0 +1,84 @@
+\documentclass[a4paper,twoside,12pt]{article}
+%\usepackage [reqno] {amsmath}
+\usepackage{amsfonts,amstext}
+\usepackage{amsmath}
+\usepackage{babel}[english]
+\usepackage{fullpage}
+\usepackage{hyperref}
+
+\newcommand{\ZETTELNUMMER}{2}
+\newcommand{\ABGABEDATUM}{Friday, November 1, 2024, 12:00 PM}
+
+\newcounter{AUFGNR}
+\setcounter{AUFGNR}{1}
+\newcommand{\AUFGABE}[2]{\vspace{0.3cm}\item[Problem \arabic{AUFGNR}]\stepcounter{AUFGNR} #1\hfill\emph{#2}}
+
+
+\newcommand{\floor}[1]{\left\lfloor{#1}\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil{#1}\right\rceil}
+\newcommand{\half}[1]{\frac{#1}{2}}
+
+
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+
+
+\begin{document}
+\pagestyle{empty}
+\hrule\medskip
+\rule{0ex}{0ex}\\[-1ex]
+\ZETTELNUMMER. Problem Set
+
+\smallskip
+\noindent
+\large
+\textbf{Concepts of Programming}\hfill 
+WiSe 2024/25 \\[0.5ex]
+\normalsize
+Wolfgang Mulzer
+
+\medskip\hrule
+
+\smallskip
+\noindent
+\textbf{Due} \ABGABEDATUM
+
+\vskip 0.5cm
+
+\begin{description}
+
+		\AUFGABE{von Neumann Architecture}{10 Pts}
+\begin{enumerate}
+
+\item Research the \emph{Harvard architecture}. What are similarities with the von Neumann architecture? Which architecture is found in modern desktop PCs?
+\item The von Neumann architecture treats data and programs the same. What advantages/disadvantages does this approach have? What could one do to mitigate these disadvantages?
+\item The von Neumann architecture is \emph{sequential}, i.e. only one instruction is being executed at each point in time. Today, most computers support \emph{execution in parallel}, i.e. you can run more than one program at any one point in time.
+
+Describe an extension of the von Neumann architecture that uses \emph{two} CPUs to make parallel execution possible. What could such an architecture look like? What problems could follow from this architecture? How might one mitigate these problems? 
+\end{enumerate} 
+
+
+
+\AUFGABE{Python Expressions}{10 Pts}
+\begin{enumerate}
+\item Write an arithmetic expression in Python that calculates the area of a triangle with base $a$ and height $h_a$.
+\item Write a Boolean expression in Python that is \texttt{True} for a given number $n$ \textit{iff}\footnote{if, and only if} $n$ represents a leap year in the Gregorian calendar.
+\item For any natural number $n > 0$, the \emph{$n^{\text{th}}$ Mersenne number} is defined as $2^n-1$. Write a Python expression that uses bitwise operations to compute the $n^\text{th}$ Mersenne number as efficiently as possible for a given $n>0$.
+\item Write an expression Python using the \texttt{ord()} function to transform a given capital letter into its lower case equivalent.
+
+\emph{Hint:} \texttt{ord()} uses ASCII. Take a look at the the ASCII character table and compare the positions of lower and upper case letters. 
+\item Wirte a conditional expression in Python calculating the price of a ticket to the cinema: children under 12 pay 10 euros, teenagers up to (and including) the age of 18 pay 12 euros, adults pay 14 euros and pensioners over the age of 65 pay 12 euros.
+\end{enumerate}
+
+\AUFGABE{Simple Python}{10 Pts}
+
+\begin{enumerate}
+\item What primitive (i.e. atomic, noncomposite) types exist in Python? Research data types and their special characteristics,  and specify two operations for each.
+\item Write a Python program that takes three integers and outputs \texttt{True} iff the numbers are distinct.
+\item Write a Python program that takes three integers and outputs \texttt{True} iff the numbers are all equal.
+\item Write a Python program that takes three integers and outputs the number of distinct integers.
+\item Use your program for (d) to solve (b) and (c).
+ \end{enumerate}
+
+\end{description}
+\end{document}
