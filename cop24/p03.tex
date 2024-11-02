@@ -1,0 +1,164 @@
+% p03.tex --- CiP Problem Set Translation
+% Based heavily off Wolfgang Mulzer's pset template. At some point I'm going to make a proper class/prelude out of this, 
+% but I can't be bothered right now.
+
+% Not sure I like the large font size - it's not a website -- but Mulzer seems to think it's a good choice
+\documentclass[a4paper,11pt]{article}
+
+% essential packages. I'm pretty sure most people have no idea what they need all of these for:
+\usepackage{amsmath} % align environments etc.
+\usepackage{amsfonts} % blackboard, fraktur etc.: everything textbook authors need to piss off their readers
+\usepackage{xcolor} % we basically only want to use red, black and white, but oh well.
+\usepackage{hyperref} % clickable links that look weird because I can't be bothered to style them
+\usepackage{geometry} % to set margins etc.
+\usepackage{fancyhdr} % for header/footer setup
+\usepackage{titlesec} % to style headings
+\usepackage{enumitem} % for list hierarchies
+\usepackage{array} % table stuff
+\usepackage{listings} % better than verbatim envs
+\usepackage{multicol} % The normal title is way too big.
+\usepackage{colortbl} % Alternating row colors
+
+
+% Mulzer's list hierarchy:
+\renewcommand{\labelenumi}{(\alph{enumi})}
+% Bullet points for itemize, though
+\setlist[itemize]{label=\textbullet, left=1em}
+
+% Assorted pset vars
+\newcommand{\course}{Concepts in Programming}
+\newcommand{\pset}{3}
+\newcommand{\due}{Friday, November 8, 2024, 12:00 PM}
+% \newcommand{\authors}{Milan Andreew, Anton Platzek}
+
+\title{
+\hrule
+\vspace{-0.5em}
+\begin{multicols}{2}
+\raggedright \large \textbf{\course}\\ % I'd have to mess around with the class file to actually make the title normal-sized, but this'll do
+\large \textsc{Problem Set \pset} \\
+\vspace{0.25em}
+
+\raggedleft \small \textbf{Due:} \due \\
+% \textbf{Authors:} \authors
+\textit{Originals by W. Mulzer}
+\end{multicols}
+\vspace{-0.5em}
+\hrule}
+\date{}
+\author{}
+
+% Problems aren't actually environments, they're just `description' items.
+\newcounter{pnr}
+\setcounter{pnr}{1}
+\newcommand{\problem}[2]{\vspace{0.3cm}\item[Problem \arabic{pnr}]\stepcounter{pnr} #1\hfill\emph{#2}}
+
+% padding stuff - we want there to be less whitespace, but I haven't quite figured out how to solve the tutor 
+% annotation issue - we could do boxes, but maybe dedicated space for margin notes is better? The current 
+% equilibrium of "the tutor just dump PDF comments into free space" is suboptimal.
+% Could also do our own footnote impl., but I'm not that good at TeX
+\geometry{
+	top=2cm,
+	bottom=2cm,
+	left=2.5cm,
+	right=2.5cm
+}
+
+% basically the same as \pagestyle{empty}, except we have a custom footer (actually, we don't anymore, but nevermind)
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyfoot[C]{\small \thepage}
+
+% Header styling
+\titleformat{\section}{\large\bfseries\uppercase}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries\uppercase}{\thesubsection}{1em}{}
+
+% Table styling
+\renewcommand{\arraystretch}{1.3}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+\definecolor{rowgray}{gray}{0.9}
+
+% Code styling - imo, code in psets is code written to be read, not run. Colorful syntax highlighting *may*
+% be useful in an editor, but should be used sparingly in literature. Also, while most compilers can't deal with Unicode characters, humans can --- and we should be taking advantage of expressive notation as much as 
+% possible. It's absolutely insane that there's no elegant way to make math mode monospaced inside listings, but I guess that one's TODO
+\lstset{
+	mathescape=true,
+	backgroundcolor=\color[RGB]{245, 245, 245},
+	frame=single,
+	rulecolor=\color[RGB]{200, 200, 200},
+	basicstyle=\ttfamily,
+	columns=fullflexible,
+	keepspaces=true,
+% Still skeptical we really need this, but these'd be acceptable.
+%	keywordstyle=\color[HTML]{007020},
+%	commentstyle=\color[HTML]{60a0b0}\itshape,
+%	stringstyle=\color[HTML]{4070a0},
+	showstringspaces=false
+	}
+
+
+% Styling links --- for some reason underlines aren't working, so I've just made it thicker.
+\hypersetup{
+	colorlinks=false,
+	linkbordercolor=black,
+	urlbordercolor=black,
+	pdfborderstyle={/S/U/W 2}
+}
+
+% \fancyfoot[R]{\small \textit{Original \TeX\ template courtesy of W. Mulzer}}
+
+\begin{document}
+\maketitle
+\vspace{-2cm}
+\begin{description}
+\problem{Conditionals}{10 pts}
+
+\begin{enumerate}
+  \item Consider a programming language that provides only the primitive \texttt{if}-\texttt{then} construct (sans \texttt{elif} and \texttt{else} branches). Demonstrate how one might simulate a general \texttt{if}-\texttt{then}-\texttt{elif}-\texttt{else} construct.
+  \item Research the \texttt{switch}-\texttt{case} construct in C and the \texttt{match}-\texttt{case} construct introduced in Python 3.10. Compare and contrast their properties.
+  \item Describe how one might simulate C's \texttt{switch}-\texttt{case} construct using Python's conditional branching mechanisms.
+\end{enumerate}
+
+\problem{Loops}{10 pts}
+
+\begin{enumerate}
+\item Construct a program utilizing a \texttt{for} loop to generate the following numerical triangle:
+\begin{lstlisting}
+      1
+     121
+    12321
+   1234321
+  123454321
+ 12345654321
+1234567654321
+\end{lstlisting}
+\item Implement a program that computes $\sum_{i=1}^n i$ utilizing a `for' loop. Additionally, consider if there exists a more elegant solution.
+\item Research the semantics of Python's \texttt{break} and \texttt{continue} control primitives, providing illustrative examples. What are their behavioral characteristics in the context of nested loop structures?
+\item Develop a program that continuously accepts numerical input until encountering a \href{https://en.wikipedia.org/wiki/Sentinel_value}{sentinel value} of 0, whereupon it shall compute and output the arithmetic mean of the provided sequence.
+\end{enumerate}
+
+
+\problem{A Random Walk}{10 pts}
+
+Consider a stochastic process on $\mathbb{N}_0$ defined as follows:\\
+Let $X_t$ be our position at time $t$, its initial state being $X_0=0$.
+
+The transition probabilities are: 
+\begin{align*}
+&P(X_{t+1} | X_t = 0) = 1 \\
+&P(X_{t+1} = z+1 | X_t = z) = P(X_{t+1} = z-1 | X_t = z) = \frac{1}{2}, \forall z > 0
+\end{align*}
+
+Implement this random walk in Python and use your program to answer the following questions. Consult the Python documentation to find a function for generating random numbers.
+
+\begin{enumerate}
+\item Calculate $\min{t: X_t = k}$ for $k \in \{10,20,30,50\}$. Come up with a hypothesis for a general formula with $k=n$
+\item Study the distribution of $X_t$ for $t \in \{100, 100\}$. Try to plot it.
+\end{enumerate}
+
+\end{description}
+\end{document}

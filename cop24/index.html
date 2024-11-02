@@ -1,142 +1,190 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <title>Concepts in Programming</title>
-  <style>
-    @font-face {
-        font-family: Chicago FLF;
-        src: url("/chicagoflf.woff2") format("woff2"), url("/chicagoflf.woff") format("woff");
-        font-style: normal; font-weight: 400;
-    }
-    @font-face {
-        font-family: ITC Garamond Narrow;
-        src: url("/itc-garamond-narrow-light.woff2") format("woff2"), url("/itc-garamond-narrow-light.woff") format("woff");
-        font-style: normal; font-weight: 300;
-    }
-    @font-face {
-        font-family: ITC Garamond Narrow;
-        src: url("/itc-garamond-narrow-book.woff2") format("woff2"), url("/itc-garamond-narrow-book.woff") format("woff");
-        font-style: normal; font-weight: 400;
-    }
-    body {
-        font-family: "ITC Garamond Narrow";
-        font-weight: 400;
-        background-color: #E0E0E0;
-        color: #000000;
-        margin: 0;
-        padding: 20px;
-        line-height: 1.5;
-    }
-    header {
-        font-family: "ITC Garamond Narrow";
-        font-weight: 300;
-        font-size: 25px;
-        padding: 10px;
-        line-height: 0.5;
-        text-align: center;
-    }
-    h1 {
-        font-size: 72px;
-        text-align: center;
-        margin-bottom: 20px;
-        padding: 10px;
-        line-height: 1.2;
-    }
-    h2 {
-        font-weight: bold;
-        font-family: "Chicago FLF";
-        font-size: 16px;
-        border-bottom: 1px solid #000000;
-        margin-top: 20px;
-    }
-    p {
-        font-family: "ITC Garamond Narrow";
-        font-weight: 300;
-        font-size: 18px;
-        line-height: 1.5;
-    }
-    img {
-        display: block;
-        margin: 20px auto;
-        border: 2px solid #000000;
-    }
-    a {
-        color: #0000FF;
-        text-decoration: underline;
-    }
-    a:hover {
-        color: #FF0000;
-    }
-    .problem-set-table {
-        width: 100%;
-        margin: 20px 0;
-        border-collapse: collapse;
-        font-family: "ITC Garamond Narrow";
-    }
-    .problem-set-table th, .problem-set-table td {
-        padding: 10px;
-        border-bottom: 1px solid #000000;
-        text-align: left;
-    }
-    .problem-set-table th {
-        font-weight: 400;
-        font-size: 18px;
-        background-color: #F0F0F0;
-    }
-    .problem-set-table td {
-        font-weight: 300;
-        font-size: 16px;
-    }
-    .download-btn {
-        font-family: "Chicago FLF";
-        font-size: 16px;
-        padding: 5px 15px;
-        border: 2px solid #000000;
-        background-color: #E0E0E0;
-        color: #000;
-        cursor: pointer;
-        text-decoration: none;
-    }
-    .download-btn:hover {
-        background-color: #000000;
-        color: #FFFFFF;
-    }
-    .content {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Concepts in Programming</h1>
-    <img src="/babel.jpg" width="600" height="420" alt="Tower of Babel">
-  </header>
+    <head>
+        <title>Concepts in Programming</title>
+        <style>
+            @font-face {
+                font-family: Chicago FLF;
+                src:
+                    url("/chicagoflf.woff2") format("woff2"),
+                    url("/chicagoflf.woff") format("woff");
+                font-style: normal;
+                font-weight: 400;
+            }
+            @font-face {
+                font-family: ITC Garamond Narrow;
+                src:
+                    url("/itc-garamond-narrow-light.woff2") format("woff2"),
+                    url("/itc-garamond-narrow-light.woff") format("woff");
+                font-style: normal;
+                font-weight: 300;
+            }
+            @font-face {
+                font-family: ITC Garamond Narrow;
+                src:
+                    url("/itc-garamond-narrow-book.woff2") format("woff2"),
+                    url("/itc-garamond-narrow-book.woff") format("woff");
+                font-style: normal;
+                font-weight: 400;
+            }
+            body {
+                font-family: "ITC Garamond Narrow";
+                font-weight: 400;
+                background-color: #e0e0e0;
+                color: #000000;
+                margin: 0;
+                padding: 20px;
+                line-height: 1.5;
+            }
+            header {
+                font-family: "ITC Garamond Narrow";
+                font-weight: 300;
+                font-size: 25px;
+                padding: 10px;
+                line-height: 0.5;
+                text-align: center;
+            }
+            h1 {
+                font-size: 72px;
+                text-align: center;
+                margin-bottom: 20px;
+                padding: 10px;
+                line-height: 1.2;
+            }
+            h2 {
+                font-weight: bold;
+                font-family: "Chicago FLF";
+                font-size: 16px;
+                border-bottom: 1px solid #000000;
+                margin-top: 20px;
+            }
+            p {
+                font-family: "ITC Garamond Narrow";
+                font-weight: 300;
+                font-size: 18px;
+                line-height: 1.5;
+            }
+            img {
+                display: block;
+                margin: 20px auto;
+                border: 2px solid #000000;
+            }
+            a {
+                color: #0000ff;
+                text-decoration: underline;
+            }
+            a:hover {
+                color: #ff0000;
+            }
+            .problem-set-table {
+                width: 100%;
+                margin: 20px 0;
+                border-collapse: collapse;
+                font-family: "ITC Garamond Narrow";
+            }
+            .problem-set-table th,
+            .problem-set-table td {
+                padding: 10px;
+                border-bottom: 1px solid #000000;
+                text-align: left;
+            }
+            .problem-set-table th {
+                font-weight: 400;
+                font-size: 18px;
+                background-color: #f0f0f0;
+            }
+            .problem-set-table td {
+                font-weight: 300;
+                font-size: 16px;
+            }
+            .download-btn {
+                font-family: "Chicago FLF";
+                font-size: 16px;
+                padding: 5px 15px;
+                border: 2px solid #000000;
+                background-color: #e0e0e0;
+                color: #000;
+                cursor: pointer;
+                text-decoration: none;
+            }
+            .download-btn:hover {
+                background-color: #000000;
+                color: #ffffff;
+            }
+            .content {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Concepts in Programming</h1>
+            <img
+                src="/babel.jpg"
+                width="600"
+                height="420"
+                alt="Tower of Babel"
+            />
+        </header>
 
-  <div class="content">
-    <p>Tuesday&apos;s tutorial made clear that there&apos;s some demand for problem sets in English. Google Translate, DeepL & co. often perform worse on domain-specific CS texts because their models tend to overfit to general-purpose corpora. These translations don&apos;t share this problem.</p>
-    <p>I&apos;ll endeavor to bring these out in a relatively timely manner. If there&apos;s any major discrepancies/anything that&apos;s unclear, you can reach me <a href="mailto:m.a@fu-berlin.de">here.</a> All rights to the German originals are held by Prof. Mulzer (who didn&apos;t approve any of this&mdash;never let it be said that a CS student respects IP law). To the extent I can even claim copyright for unauthorized translations, you may consider CC0 to apply. If you want to look at the original .tex&apos;s, they&apos;re where you&apos;d expect them to be.</p>
+        <div class="content">
+            <p>
+                Tuesday&apos;s tutorial made clear that there&apos;s some demand
+                for problem sets in English. Google Translate, DeepL & co. often
+                perform worse on domain-specific CS texts because their models
+                tend to overfit to general-purpose corpora. These translations
+                don&apos;t share this problem.
+            </p>
+            <p>
+                I&apos;ll endeavor to bring these out in a relatively timely
+                manner. If there&apos;s any major discrepancies/anything
+                that&apos;s unclear, you can reach me
+                <a href="mailto:m.a@fu-berlin.de">here.</a> All rights to the
+                German originals are held by Prof. Mulzer (who didn&apos;t
+                approve any of this&mdash;never let it be said that a CS student
+                respects IP law). To the extent I can even claim copyright for
+                unauthorized translations, you may consider CC0 to apply. If you
+                want to look at the original .tex&apos;s, they&apos;re where
+                you&apos;d expect them to be.
+            </p>
 
-    <h2>Translations</h2>
-    <table class="problem-set-table">
-      <tr>
-        <th>Problem Set</th>
-        <th>Due Date</th>
-        <th></th>
-      </tr>
-      <tr>
-        <td>Problem Set 1</td>
-        <td>October 25, 2024</td>
-        <td><a href="a01.pdf" class="download-btn" download>Download</a></td>
-      </tr>
-      <tr>
-        <td>Problem Set 2</td>
-        <td>November 1, 2024</td>
-        <td><a href="a02.pdf" class="download-btn" download>Download</a></td>
-      </tr>
-    </table>
-
-  </div>
-</body>
+            <h2>Translations</h2>
+            <table class="problem-set-table">
+                <tr>
+                    <th>Problem Set</th>
+                    <th>Due Date</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>Problem Set 1</td>
+                    <td>October 25, 2024</td>
+                    <td>
+                        <a href="a01.pdf" class="download-btn" download
+                            >Download</a
+                        >
+                    </td>
+                </tr>
+                <tr>
+                    <td>Problem Set 2</td>
+                    <td>November 1, 2024</td>
+                    <td>
+                        <a href="a02.pdf" class="download-btn" download
+                            >Download</a
+                        >
+                    </td>
+                </tr>
+                <tr>
+                    <td>Problem Set 3</td>
+                    <td>November 8, 2024</td>
+                    <td>
+                        <a href="p03.pdf" class="download-btn" download
+                            >Download</a
+                        >
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
 </html>
