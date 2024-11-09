@@ -161,7 +161,7 @@
 	\end{enumerate}
 \end{problem}
 
-\begin{problem}[10]{Root Extraction Methods}
+\begin{problem}[10]{Root Finding Methods}
 	Let $a \geq 0$ be a real number. A well-known method to compute the square root $\sqrt{a}$ of $a$ is as follows:
 	
 	Begin with an initial estimate $x_0 = 1$. For $n \geq 1$, compute each subsequent term by the recurrence relation 
@@ -177,7 +177,7 @@
 		
 		\item Now assume $a > 1$. An alternative approach uses an interval search method:
 		\begin{itemize}
-			\item Star with a \emph{search interval} $[x,y]$ initialized to $[1, a]$.
+			\item Start with a \emph{search interval} $[x,y]$ initialized to $[1, a]$.
 			\item In each iteration, set $z = \frac{x + y}{2}$ as the midpoint of the interval.
 			\item If $z^2 > a$, set $y = z$; otherwise, set $x = z$.
 			\item Repeat until $z$ is ``sufficiently close'' to $\sqrt{a}$.
