@@ -1,0 +1,210 @@
+% 04.tex --- CiP Problem Set
+% Based heavily off Wolfgang Mulzer's pset template. At some point I'm going to make a proper class/prelude out of this, 
+% but I can't be bothered right now.
+
+% Not sure I like the large font size - it's not a website -- but Mulzer seems to think it's a good choice
+\documentclass[a4paper,11pt]{article}
+
+% essential packages. I'm pretty sure most people have no idea what they need all of these for:
+\usepackage{amsmath} % align environments etc.
+\usepackage{amssymb}
+\usepackage{amsfonts} % blackboard, fraktur etc.: everything textbook authors need to piss off their readers
+\usepackage{amsthm} % for nice theorem, proof etc. envs
+\usepackage{xcolor} % we basically only want to use red, black and white, but oh well.
+\usepackage{hyperref} % clickable links that look weird because I can't be bothered to style them
+\usepackage{geometry} % to set margins etc.
+\usepackage{fancyhdr} % for header/footer setup
+\usepackage{titlesec} % to style headings
+\usepackage{enumitem} % for list hierarchies
+\usepackage{array} % table stuff
+\usepackage{listings} % better than verbatim envs
+\usepackage{multicol} % The normal title is way too big.
+\usepackage{colortbl} % Alternating row colors
+\usepackage{marginnote}
+\usepackage{mdframed} % I hate tcolorboxes or whatever it's called
+\usepackage[english]{babel}
+
+
+% Mulzer's list hierarchy:
+\setlist[enumerate,1]{label=(\alph*)} 
+\setlist[enumerate,2]{label=(\roman*)} 
+% Bullet points for itemize, though
+\setlist[itemize]{label=\textbullet, left=1em}
+
+% Assorted pset vars
+\newcommand{\course}{Concepts in Programming}
+\newcommand{\pset}{4}
+\newcommand{\due}{Friday, November 15, 2024, 12:00 PM}
+\newcommand{\authors}{Milan Andreew, Simon Steinberg}
+
+\title{
+\hrule
+\vspace{-0.5em}
+\begin{multicols}{2}
+\raggedright \large \textbf{\course}\\ % I'd have to mess around with the class file to actually make the title normal-sized, but this'll do
+\large \textsc{Problem Set \pset} \\
+\vspace{0.25em}
+
+\raggedleft \small \textbf{Due:} \due \\
+%\textbf{Authors:} \authors
+\end{multicols}
+\vspace{-0.3em}
+\hrule}
+\date{}
+\author{}
+
+\newenvironment{tcomment}[1][]{
+	\begin{mdframed}[
+		linecolor=black,
+		linewidth=0.5pt,
+		innerleftmargin=5pt,
+		innerrightmargin=5pt,
+		innertopmargin=5pt,
+		innerbottommargin=5pt
+		]
+		\small\color[RGB]{70,70,70}
+		\textbf{Notes:}\par\vspace{5cm}
+		}{\end{mdframed}}
+
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par 
+    \pushQED{\qed}
+    \normalfont
+    \list{}{\leftmargin=2em}
+    \item[\hskip\labelsep\itshape #1\@addpunct{.}]\ignorespaces
+    }{\popQED\endlist\@endpefalse}
+\makeatother
+% Actual problem envs; at some point it'd be great if these changed from simple problem envs to problem-solution-tutor
+% annotation, depending on whether it's a translation or the actual solution. Manually copy-pasting this stuff gets
+% tiring pretty quickly.
+\newcounter{pnr}
+\setcounter{pnr}{1}
+\newenvironment{problem}[2][]{
+\noindent\textsc{Problem \arabic{pnr}: #2} \hfill \textbf{[#1 pts]}\par
+	\stepcounter{pnr}
+	}{
+%	\begin{tcomment}\end{tcomment}
+	}{\vspace{0.3cm}}
+
+\newtheorem{theorem}{Theorem}
+
+\newcommand{\mnote}[1]{
+	\marginnote{\raggedright\footnotesize\color[RGB]{70,70,70}#1}}
+% padding stuff - we want there to be less whitespace, but I haven't quite figured out how to solve the tutor 
+% annotation issue - we could do boxes, but maybe dedicated space for margin notes is better? The current 
+% equilibrium of "the tutor just dump PDF comments into free space" is suboptimal.
+% Could also do our own footnote impl., but I'm not that good at TeX
+\geometry{
+	top=2cm,
+	bottom=2cm,
+	left=2.5cm,
+	right=2.5cm,
+%	marginparwidth=3cm,
+%	marginparsep=0.5cm
+}
+
+% basically the same as \pagestyle{empty}, except we have a custom footer
+\pagestyle{fancyplain}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyfoot[C]{\small \thepage}
+
+% Header styling
+\titleformat{\section}{\large\bfseries\uppercase}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries\uppercase}{\thesubsection}{1em}{}
+
+% Table styling
+\renewcommand{\arraystretch}{1.3}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+\definecolor{rowgray}{gray}{0.9}
+
+% Code styling - imo, code in psets is code written to be read, not run. Colorful syntax highlighting *may*
+% be useful in an editor, but should be used sparingly in literature. Also, while most compilers can't deal with Unicode characters, humans can --- and we should be taking advantage of expressive notation as much as 
+% possible. It's absolutely insane that there's no elegant way to make math mode monospaced inside listings, but I guess that one's TODO
+\lstset{
+	mathescape=true,
+	basicstyle=\ttfamily,
+	columns=fullflexible,
+	keepspaces=true,
+% Still skeptical we really need this, but these'd be acceptable.
+%	keywordstyle=\color[HTML]{007020},
+%	commentstyle=\color[HTML]{60a0b0}\itshape,
+%	stringstyle=\color[HTML]{4070a0},
+	showstringspaces=false
+	}
+
+\newcommand{\mtt}[1]{\mathtt{#1}}
+\let\mathtt=\mtt
+
+
+% Styling links --- for some reason underlines aren't working, so I've just made it thicker.
+\hypersetup{
+	colorlinks=false,
+	linkbordercolor=black,
+	urlbordercolor=black,
+	pdfborderstyle={/S/U/W 2}
+}
+
+\fancyfoot[R]{\small \textit{Original \TeX\ template courtesy of W. Mulzer}}
+
+\begin{document}
+\maketitle
+\vspace{-1cm}
+\begin{problem}[10]{Collecting the Full Set}
+	\begin{enumerate}
+		\item Experimentally investigate how many times one must randomly select a number from $\{1, 2, \ldots, n\}$ until every number has appeared at least once. For each value of $n= 10$, $100$, and $1000$, perform $100$ independent trials. In each trial, record the total number of selections required to complete the set, and summarize your results by reporting the minimum, maximum, and average number of selections required to observe all numbers. In each experiment, count the number of trials needed.
+		
+		\item Extend the experiment in Part (a) to examine how many times the most frequently selected number appears by the end of each trial. For each value of $n$, compute the minimum, maximum, and average occurrences of the most frequent number across the $100$ trials.
+	\end{enumerate}
+\end{problem}
+
+\begin{problem}[10]{Root Extraction Methods}
+	Let $a \geq 0$ be a real number. A well-known method to compute the square root $\sqrt{a}$ of $a$ is as follows:
+	
+	Begin with an initial estimate $x_0 = 1$. For $n \geq 1$, compute each subsequent term by the recurrence relation 
+	\[
+	x_n = \frac{1}{2}\,\left(x_{n - 1} + \frac{a}{x_{n - 1}}\right).
+	\]
+	Repeat this process until $x_n$ is ``sufficiently close'' to $\sqrt{a}$.
+	
+	\begin{enumerate}
+		\item What is the idea behind the formula for $x_n$?
+		
+		\item Implement this method in Python.
+		
+		\item Now assume $a > 1$. An alternative approach uses an interval search method:
+		\begin{itemize}
+			\item Star with a \emph{search interval} $[x,y]$ initialized to $[1, a]$.
+			\item In each iteration, set $z = \frac{x + y}{2}$ as the midpoint of the interval.
+			\item If $z^2 > a$, set $y = z$; otherwise, set $x = z$.
+			\item Repeat until $z$ is ``sufficiently close'' to $\sqrt{a}$.
+		\end{itemize}
+		What is the underlying idea of this alternative method? Implement it in Python. Which method do you find more effective?
+	\end{enumerate}
+\end{problem}
+
+\begin{problem}[10]{Composite Data Types in Python}
+Consider the following sequence of Python statements. Determine the output of each `print' statement and identify any statements that produce errors.
+
+\begin{lstlisting}[language=Python]
+a = [1, 3, (4, 2)]
+b = (a, a, [1, 5, 4, 3])
+print(b[1][2])
+b[1][2] = "wer"
+print(b)
+a[2][1]
+a[2][1] = "wann"
+print(b)
+b[2][1]
+b[2][1] = ["wo", "wie"]
+print(b)
+b[2] = [2, 4]
+print(b)
+a = "warum"
+print(b)
+\end{lstlisting}
+\end{problem}
+\end{document}
